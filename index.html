@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="utf-8" />
+    <title>Entrainement Bootstrap</title>
+
+    <!-- shrink-to-fit=no pour une compatibilité optimisé sur safari -->
+    <!-- doc mozilla => Viewport meta tags using "width=device-width" cause the page to scale down to fit content that overflows the viewport bounds. You can override this behavior by adding "shrink-to-fit=no" to your meta tag as shown below. The added value will prevent the page from scaling to fit the viewport. -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+
+    <!-- suppression de la balise meta relative à la compatibilité edge présente en v3 -->
+
+    <meta name="description" content="desc" />
+    <meta name="author" content="moi" />
+
+    <!-- lien en cdn -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
+        integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous" />
+
+    <link href="style.css" rel="stylesheet" />
+</head>
+
+<body class="bg-dark text-white">
+    <form action="">
+    <div class="container bg-info mt-5">
+        <!-- ===================================================================== -->
+
+        <h2 class="text-center pt-3">Calculer une TVA</h2>
+        <div class="row">
+        <ul class="list-inline m-auto pt-3">
+            <li class="list-inline-item mt-3">Montant Hors Taxe</li>
+            <li class="list-inline-item mt-3">Montant TVA</li>
+            <li class="list-inline-item mt-3">Montant TTC</li>
+        </ul>
+    </div>
+
+    <hr class="bg-light"  />
+    <!-- ===================================================================== -->
+        <div class="input-group mb-1 auto" data-toggle="tooltip" data-placement="top" title="Insérez seulement votre montant Hors Taxe.">
+
+            <input type="text" class="form-control auto" aria-label="HT" onkeyup="calculTva()" id="ht" />
+            <div class="input-group-append">
+                <span class="input-group-text">€</span>
+            </div>
+
+            <span class="input-group-text ml-3">x</span>
+
+            <input type="text" class="form-control ml-3" aria-label="TVA" id="tva" />
+            <div class="input-group-append">
+                <span class="input-group-text">€</span>
+            </div>
+
+            <span class="input-group-text ml-3 ">=</span>
+
+            <input type="text" class="form-control ml-3" aria-label="TTC" onkeyup="totalTVA()"id="ttc"/>
+            <div class="input-group-append">
+                <span class="input-group-text">€</span>
+            </div>
+        </div>
+        <hr class="bg-light" />
+        <!-- ===================================================================== -->
+        <h4 class="text-center">Taux TVA</h4>
+        <div class="input-group mb-1 auto  w-25 mx-auto" >
+
+        <input type="text" class="form-control w-25 ml-3" data-toggle="tooltip" data-placement="top" title="Cliquez sur le Taux de votre choix pour modifier." aria-label="HT" id="taux" />
+        <div class="input-group-append">
+            <span class="input-group-text" data-toggle="tooltip" data-placement="top" title="Cliquez sur le Taux de votre choix pour modifier.">%</span>
+        </div>
+        <input class="text-light btn btn-secondary ml-3 font-weight-bold mx-auto" data-toggle="tooltip" data-placement="top" title="Cliquez pour effacer les valeurs." type="reset" value="Reset" id="reset">
+
+        </div>
+
+        <hr class="bg-light" />
+        <!-- ===================================================================== -->
+
+
+        <div class="row">
+            <div class="col-md-12 text-center">
+              <div class="btn-group" data-toggle="tooltip" data-placement="top" title="Cliquez sur le Taux de votre choix pour calculer.">
+                <button type="button" class="text-secondary btn btn-outline-light ml-3 font-weight-bold" onClick="miseAJourTaux()" id="vingt">20%</button>
+                <button type="button" class="text-secondary btn btn-outline-light ml-3 font-weight-bold" onClick="miseAJourTaux()" id="dix">10% </button>
+                <button type="button" class="text-secondary btn btn-outline-light ml-3 font-weight-bold" onClick="miseAJourTaux()" id="huit">8,5%</button>
+                <button type="button" class="text-secondary btn btn-outline-light ml-3 font-weight-bold" onClick="miseAJourTaux()" id="sept">7%</button>
+                <button type="button" class="text-secondary btn btn-outline-light ml-3 font-weight-bold" onClick="miseAJourTaux()" id="cinq">5,5%</button>
+                <button type="button" class="text-secondary btn btn-outline-light ml-3 font-weight-bold" onClick="miseAJourTaux()" id="dixNeuf">19,6%</button>
+            </div>
+            </div>
+          </div>
+
+          <hr class="bg-light" />
+          <!-- ===================================================================== -->
+  
+          <ul class="list-unstyled mt-3" id="recap">
+
+        </ul>
+        </div>
+    </form>
+
+
+
+        <!-- ===================================================================== -->
+
+
+    <!-- /container -->
+
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+    </script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+        </script>  
+        <script src="/app.js "></script>
+</body>
+
+</html>

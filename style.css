@@ -1,0 +1,12 @@
+
+.list-inline-item:not(:last-child) {
+    margin-right: 17.5rem;
+}
+
+
+@media screen and (min-width: 465px) and (max-width: 985px) {
+    .list-inline-item:not(:last-child) {
+        margin-right: 4rem;
+    }
+  }
+
